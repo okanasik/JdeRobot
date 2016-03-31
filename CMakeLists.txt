@@ -333,7 +333,7 @@ execute_process(
 set(PROJECT_VERSION ${CPACK_DEBIAN_PACKAGE_VERSION})
 include(scripts/incremental_releases/incremental-releases.cmake)
 set(CPACK_DEBIAN_PACKAGE_VERSION ${PROJECT_VERSION})
-
+SET (CPACK_PACKAGE_FILE_NAME "${CMAKE_PROJECT_NAME}_${CPACK_DEBIAN_PACKAGE_VERSION}_${CPACK_DEBIAN_PACKAGE_ARCHITECTURE}")
 
 #SET (CPACK_COMPONENTS_ALL Libraries ApplicationData)
 include (CPack Documentation)
