@@ -66,6 +66,7 @@ int main(int argc, char** argv){
 
 	//0: Ice    other:ROS
 	int driver = prop->getPropertyAsIntWithDefault("Cameraview.Server", 0);
+	std::string topic = prop->getPropertyWithDefault("Cameraview.Topic", "usb_cam/image_raw");
 
 	if (driver == 0) {   //Try to connect with ICE
 
@@ -111,7 +112,7 @@ int main(int argc, char** argv){
 		listenerCamera* l = new listenerCamera();
 		pthread_t thr_info;
 		pthread_create(&thr_info, NULL, &getInfoAsync, (void*) l);
-		l->listen(argc,argv);
+		l->listen(argc,argv,topic);
 		
 	}
 
